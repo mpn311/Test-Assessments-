@@ -15,22 +15,6 @@ A sophisticated RAG (Retrieval-Augmented Generation) system powered by NVIDIA's 
 
 ---
 
-## 📋 Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Example Questions](#example-questions)
-- [How It Works](#how-it-works)
-- [Project Structure](#project-structure)
-- [Troubleshooting](#troubleshooting)
-- [Advanced Configuration](#advanced-configuration)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
 ## 🔧 Prerequisites
 
 ### System Dependencies
