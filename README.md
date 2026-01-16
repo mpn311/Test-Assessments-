@@ -486,49 +486,6 @@ Answer:
 
 ---
 
-## 📁 Project Structure
-
-```
-financial-rag-assistant/
-│
-├── app.py                  # Main application file
-├── requirements.txt        # Python dependencies
-├── .env                    # Environment variables (create this)
-├── .env.example           # Template for .env
-├── README.md              # This file
-│
-├── venv/                  # Virtual environment (created during setup)
-│   └── ...
-│
-└── .streamlit/            # Streamlit config (optional)
-    └── config.toml
-```
-
-### File Descriptions
-
-**app.py:**
-- Main application logic
-- PDF processing functions
-- Search and indexing
-- UI components
-- ~400 lines of code
-
-**requirements.txt:**
-- All Python package dependencies
-- Pinned versions for reproducibility
-- Includes ML models, PDF tools, OCR libraries
-
-**.env:**
-- Stores sensitive configuration
-- NVIDIA API key
-- Never commit to git!
-
-**README.md:**
-- Documentation you're reading
-- Setup instructions
-- Usage examples
-
----
 
 ## 🐛 Troubleshooting
 
