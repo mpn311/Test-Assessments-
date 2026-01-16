@@ -669,26 +669,6 @@ sudo streamlit run app.py
 
 ---
 
-## 🔧 Advanced Configuration
-
-### Custom Prompts
-
-Edit the prompt in `answer_question()` function:
-
-```python
-prompt = f"""You are a [YOUR CUSTOM ROLE].
-
-CUSTOM RULES:
-1. [Your rule 1]
-2. [Your rule 2]
-
-Context:
-{context}
-
-Question: {q}
-
-Answer:"""
-```
 
 ### Adjusting Search Parameters
 
@@ -730,65 +710,7 @@ selected_model = st.selectbox("Choose Model", AVAILABLE_MODELS.keys())
 llm = ChatNVIDIA(model=AVAILABLE_MODELS[selected_model])
 ```
 
-### Streamlit Configuration
 
-Create `.streamlit/config.toml`:
-
-```toml
-[theme]
-primaryColor = "#FF4B4B"
-backgroundColor = "#0E1117"
-secondaryBackgroundColor = "#262730"
-textColor = "#FAFAFA"
-font = "sans serif"
-
-[server]
-port = 8501
-enableCORS = false
-enableXsrfProtection = true
-maxUploadSize = 200
-
-[browser]
-gatherUsageStats = false
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Here's how you can help:
-
-### Reporting Bugs
-
-1. Check existing issues first
-2. Create detailed bug report with:
-   - Python version
-   - OS and version
-   - Error messages
-   - Steps to reproduce
-
-### Feature Requests
-
-1. Open an issue with `[Feature Request]` tag
-2. Describe the feature
-3. Explain use cases
-4. Provide examples if possible
-
-### Code Contributions
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature-name`
-3. Make changes and test thoroughly
-4. Commit: `git commit -m "Add feature: description"`
-5. Push: `git push origin feature-name`
-6. Open Pull Request
-
-### Code Style
-
-- Follow PEP 8 guidelines
-- Add comments for complex logic
-- Update documentation
-- Add type hints where applicable
 
 ---
 
