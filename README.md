@@ -1,4 +1,4 @@
-# 📊 Financial Document RAG Assistant with Reasoning
+# 📊 Document RAG Assistant with Reasoning
 
 A sophisticated RAG (Retrieval-Augmented Generation) system powered by NVIDIA's Nemotron 70B reasoning model for advanced financial document analysis with hybrid search, table extraction, and chart OCR capabilities.
 
