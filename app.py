@@ -11,6 +11,10 @@ load_dotenv()
 
 # ---- imports ----
 import streamlit as st
+
+# ================== MUST BE FIRST STREAMLIT COMMAND ==================
+st.set_page_config("Document RAG", layout="wide")
+
 import chromadb
 from chromadb.api.types import EmbeddingFunction
 from langchain_nvidia_ai_endpoints import ChatNVIDIA, NVIDIAEmbeddings
@@ -34,8 +38,10 @@ if not NVIDIA_API_KEY:
     st.error("❌ NVIDIA_API_KEY not set (check .env)")
     st.stop()
 
-# Using NVIDIA's reasoning model for better analysis
-REASONING_MODEL = "nvidia/llama-3.1-nemotron-70b-instruct"
+# Using NVIDIA's models - updated to working endpoints
+# Options: "meta/llama-3.1-8b-instruct", "meta/llama-3.1-70b-instruct", 
+#          "nvidia/llama-3.1-nemotron-nano-8b-v1", "mistralai/mixtral-8x22b-instruct-v0.1"
+REASONING_MODEL = "meta/llama-3.1-70b-instruct"  # Good reasoning and analysis
 EMBED_MODEL = "nvidia/nv-embed-v1"
 DIST_THRESHOLD = 1.2
 
@@ -242,7 +248,7 @@ def answer_question(q):
         cites.append(tag)
 
     # Enhanced prompt for reasoning model
-    prompt = f"""You are a  document analyst. Use ONLY the context provided below to answer the question.
+    prompt = f"""You are a document analyst. Use ONLY the context provided below to answer the question.
 
 CRITICAL RULES:
 1. If the answer is not in the context, respond ONLY with: "Not found in the document."
@@ -272,15 +278,13 @@ Answer:"""
     return ans, results
 
 # ================== UI ==================
-st.set_page_config("Document RAG", layout="wide")
-
 # Header with model info
 col1, col2 = st.columns([3, 1])
 with col1:
-    st.title("📊Document RAG Assistant")
+    st.title("📊 Document RAG Assistant")
     st.caption("Hybrid RAG • Tables & Charts • Reasoning Model")
 with col2:
-    st.info(f"🧠 Model:\n{REASONING_MODEL.split('/')[-1]}")
+    st.info(f"🧠 **Model:**\n`{REASONING_MODEL}`")
 
 uploaded = st.file_uploader("Upload PDF", type=["pdf"])
 if uploaded:
@@ -347,7 +351,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 📊 About")
     st.markdown(f"""
-    **Model:** NVIDIA Nemotron 70B
+    **Model:** Meta Llama 3.1 70B Instruct
     
     **Features:**
     - Advanced reasoning capabilities
@@ -355,13 +359,4 @@ with st.sidebar:
     - Financial document expertise
     - Hybrid search (semantic + keyword)
     - Table & chart extraction
-    """)
-    
-    st.markdown("---")
-    st.markdown("**Tips:**")
-    st.markdown("""
-    - Ask analytical questions for deeper insights
-    - Request comparisons between metrics
-    - Ask "why" and "how" questions
-    - Request step-by-step explanations
     """)
